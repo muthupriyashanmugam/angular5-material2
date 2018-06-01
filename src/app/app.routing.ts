@@ -5,4 +5,4 @@ import { Mat2TableComponent } from './table/mat-table.component';
 const appRoutes: Routes = [
   { path: 'table', component: Mat2TableComponent},
 ];
-export const routing: ModuleWithProviders = RouterModule.forRoot(appRoutes);
+export const Routing: ModuleWithProviders = RouterModule.forRoot(appRoutes);

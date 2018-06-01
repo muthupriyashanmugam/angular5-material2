@@ -1,37 +1,17 @@
-import { Component, OnInit, ViewChild, AfterViewInit} from '@angular/core';
-import {MatTableDataSource,MatSort, MatPaginator,MatSnackBar} from '@angular/material';
-import { Sort } from '@angular/material';
+import { Component } from '@angular/core';
+
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent implements OnInit,AfterViewInit {
-  @ViewChild(MatSort) sort: MatSort;
-  @ViewChild(MatPaginator) paginator: MatPaginator;
-  title = 'app';
-  displayedColumns = ['position', 'name', 'weight', 'symbol', 'actions'];
-  dataSource = new MatTableDataSource(ELEMENT_DATA);
-  headerElements:Array<any>;
+
+export class AppComponent {
   events = [];
   menuList:Array<any>;
-  constructor(public snackBar: MatSnackBar) {}
+  constructor() {}
 
   ngOnInit() {
-    this.headerElements = [
-      {
-        name:'position'
-      },
-      {
-        name:'name'
-      },
-      {
-        name:'weight'
-      },
-      {
-        name:'symbol'
-      }
-    ];
     this.menuList =[
       {
         name:'Table',
@@ -43,54 +23,4 @@ export class AppComponent implements OnInit,AfterViewInit {
       }
     ];
   }
-
-  /**
-   * Set the paginator after the view init since this component will
-   * be able to query its view for the initialized paginator.
-   */
-
-  ngAfterViewInit() {
-    this.dataSource.sort = this.sort;
-    this.dataSource.paginator = this.paginator;
-  }
-
-  applyFilter(filterValue: string) {
-    filterValue = filterValue.trim(); // Remove whitespace
-    filterValue = filterValue.toLowerCase(); // MatTableDataSource defaults to lowercase matches
-    this.dataSource.filter = filterValue;
-  }
-
-  openSnackBar(message: string, action: string) {
-    this.snackBar.open(message, action, {
-      duration: 2000,
-    });
-  }
-
-  onDelete(dataId,idx) {
-    this.dataSource.data.splice(idx,1);
-    this.dataSource = new MatTableDataSource<PeriodicElement>(this.dataSource.data);
-    setTimeout(() => {
-      this.dataSource.paginator = this.paginator;
-    });
-  }
 }
-
-export interface PeriodicElement {
-  name: string;
-  position: number;
-  weight: number;
-  symbol: string;
-}
-
-const ELEMENT_DATA: PeriodicElement[] = [
-  {position: 1, name: 'Hydrogen', weight: 1.0079, symbol: 'H'},
-  {position: 2, name: 'Helium', weight: 4.0026, symbol: 'He'},
-  {position: 3, name: 'Lithium', weight: 6.941, symbol: 'Li'},
-  {position: 4, name: 'Beryllium', weight: 9.0122, symbol: 'Be'},
-  {position: 5, name: 'Boron', weight: 10.811, symbol: 'B'},
-  {position: 6, name: 'Carbon', weight: 12.0107, symbol: 'C'},
-  {position: 7, name: 'Nitrogen', weight: 14.0067, symbol: 'N'},
-  {position: 8, name: 'Oxygen', weight: 15.9994, symbol: 'O'},
-  {position: 9, name: 'Fluorine', weight: 18.9984, symbol: 'F'},
-  {position: 10, name: 'Neon', weight: 20.1797, symbol: 'Ne'},
-];

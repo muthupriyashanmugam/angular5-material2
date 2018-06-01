@@ -1,4 +1,4 @@
-# Angular5-material2
+# Angular5-material5
 Examples for material2 components with code samples.This will shows how we optimally used the material2 components.
 
 ## Getting Started

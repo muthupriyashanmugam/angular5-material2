@@ -14,6 +14,7 @@ export class AppComponent implements OnInit,AfterViewInit {
   dataSource = new MatTableDataSource(ELEMENT_DATA);
   headerElements:Array<any>;
   events = [];
+  menuList:Array<any>;
   constructor(public snackBar: MatSnackBar) {}
 
   ngOnInit() {
@@ -29,6 +30,16 @@ export class AppComponent implements OnInit,AfterViewInit {
       },
       {
         name:'symbol'
+      }
+    ];
+    this.menuList =[
+      {
+        name:'Table',
+        path:'table'
+      },
+      {
+        name:'Hints',
+        path:'hints'
       }
     ];
   }

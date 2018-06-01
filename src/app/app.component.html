@@ -7,7 +7,9 @@
 <mat-sidenav-container class="example-container">
     <mat-sidenav #sidenav mode="side" [(opened)]="opened" (opened)="events.push('open!')"
                   (closed)="events.push('close!')">
-      Sidenav content
+          <mat-list>
+              <mat-list-item *ngFor='let menu of menuList'> {{menu.name}} </mat-list-item>
+          </mat-list>
     </mat-sidenav>
   <mat-sidenav-content>
       <p><mat-checkbox [(ngModel)]="opened">sidenav.opened</mat-checkbox></p>
@@ -34,6 +36,7 @@
       <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
     </mat-table>
 </div>
+<router-outlet></router-outlet>
 </mat-sidenav-content>
 </mat-sidenav-container>
 

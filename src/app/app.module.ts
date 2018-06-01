@@ -17,16 +17,23 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatCheckboxModule } from '@angular/material/checkbox';
+import { MatListModule } from '@angular/material/list';
+
+//Components added
+import { Mat2TableComponent } from '../app/table/mat-table.component';
+
+//Router added
+import { routing } from '../app/app.routing';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,Mat2TableComponent
   ],
   imports: [
     BrowserModule,MatSlideToggleModule,MatTableModule,MatSortModule,BrowserAnimationsModule,
     MatInputModule,MatPaginatorModule,MatTooltipModule,FlexLayoutModule,MatButtonModule,
     MatSnackBarModule,MatIconModule,MatToolbarModule,MatSidenavModule,MatCheckboxModule,
-    FormsModule
+    FormsModule,MatListModule,routing
   ],
   providers: [],
   bootstrap: [AppComponent]

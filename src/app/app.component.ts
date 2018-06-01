@@ -1,23 +1,22 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
-import {MatTableDataSource,MatSort, MatPaginator} from '@angular/material';
+import { Component, OnInit, ViewChild, AfterViewInit} from '@angular/core';
+import {MatTableDataSource,MatSort, MatPaginator,MatSnackBar} from '@angular/material';
 import { Sort } from '@angular/material';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent implements OnInit {
+export class AppComponent implements OnInit,AfterViewInit {
   @ViewChild(MatSort) sort: MatSort;
   @ViewChild(MatPaginator) paginator: MatPaginator;
   title = 'app';
-  displayedColumns = ['position', 'name', 'weight', 'symbol'];
+  displayedColumns = ['position', 'name', 'weight', 'symbol', 'actions'];
   dataSource = new MatTableDataSource(ELEMENT_DATA);
   headerElements:Array<any>;
-
-  constructor() {}
+  events = [];
+  constructor(public snackBar: MatSnackBar) {}
 
   ngOnInit() {
-    this.dataSource.paginator = this.paginator;
     this.headerElements = [
       {
         name:'position'
@@ -33,13 +32,35 @@ export class AppComponent implements OnInit {
       }
     ];
   }
-  sortData(sort: Sort) {
+
+  /**
+   * Set the paginator after the view init since this component will
+   * be able to query its view for the initialized paginator.
+   */
+
+  ngAfterViewInit() {
     this.dataSource.sort = this.sort;
+    this.dataSource.paginator = this.paginator;
   }
+
   applyFilter(filterValue: string) {
     filterValue = filterValue.trim(); // Remove whitespace
     filterValue = filterValue.toLowerCase(); // MatTableDataSource defaults to lowercase matches
     this.dataSource.filter = filterValue;
+  }
+
+  openSnackBar(message: string, action: string) {
+    this.snackBar.open(message, action, {
+      duration: 2000,
+    });
+  }
+
+  onDelete(dataId,idx) {
+    this.dataSource.data.splice(idx,1);
+    this.dataSource = new MatTableDataSource<PeriodicElement>(this.dataSource.data);
+    setTimeout(() => {
+      this.dataSource.paginator = this.paginator;
+    });
   }
 }
 

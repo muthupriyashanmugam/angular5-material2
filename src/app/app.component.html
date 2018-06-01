@@ -1,26 +1,41 @@
 <!--The content below is only a placeholder and can be replaced.-->
-<div style="text-align:center">
-  <h1>
-    Welcome to {{ title }}!
-  </h1>
-</div>
-<h2>Here are some links to help you start: </h2>
+<mat-toolbar color="primary">
+    <mat-toolbar-row>
+      <span>Welcome to {{ title }}!</span>
+    </mat-toolbar-row>
+  </mat-toolbar>
+<mat-sidenav-container class="example-container">
+    <mat-sidenav #sidenav mode="side" [(opened)]="opened" (opened)="events.push('open!')"
+                  (closed)="events.push('close!')">
+      Sidenav content
+    </mat-sidenav>
+  <mat-sidenav-content>
+      <p><mat-checkbox [(ngModel)]="opened">sidenav.opened</mat-checkbox></p>
 <mat-form-field class="example-full-width">
   <input matInput placeholder="Filter values" (keyup)="applyFilter($event.target.value)">
 </mat-form-field>
-<button mat-raised-button color="primary">Primary</button>
-<div fxFlex='50'>
+<button mat-raised-button color="primary" (click)="openSnackBar('Filter results shown', 'close')">Apply</button>
+<div fxFlex='70'>
     <mat-paginator #paginator [pageSize]="5" [pageSizeOptions]="[5, 10, 20]"></mat-paginator>
-    <mat-table #table [dataSource]="dataSource" matSort (matSortChange)="sortData($event)">
+    <mat-table #table [dataSource]="dataSource" matSort>
           <ng-container *ngFor='let header of headerElements' matColumnDef="{{header.name}}" >
               <mat-header-cell *matHeaderCellDef mat-sort-header [matTooltip]="header.name" matTooltipPosition="above"> {{header.name}} </mat-header-cell>
               <mat-cell *matCellDef="let element"> {{element[header.name]}} </mat-cell>
           </ng-container>
+          <ng-container matColumnDef="actions">
+            <mat-header-cell *matHeaderCellDef> DELETE</mat-header-cell>
+            <mat-cell *matCellDef="let element;let elementIdx = index" (click)="$event.stopPropagation()">
+                <button mat-button (click)="onDelete(element,elementIdx)">
+                    <mat-icon>delete</mat-icon>
+                </button>
+            </mat-cell>
+        </ng-container>
       <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
       <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
     </mat-table>
 </div>
-
+</mat-sidenav-content>
+</mat-sidenav-container>
 
   
 

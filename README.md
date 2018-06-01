@@ -1,4 +1,4 @@
-# angular5-material2
+# Angular5-material2
 Examples for material2 components with code samples.This will shows how we optimally used the material2 components.
 
 ## Getting Started
@@ -7,20 +7,20 @@ These instructions will get you a copy of the project up and running on your loc
 
 ### Prerequisites
 
-node - v6.x.x
-npm - v3.x.x
-@angular/cli - v6.x.x
+    * node - v6.x.x
+    * npm - v3.x.x
+    * @angular/cli - v6.x.x
 
-# Steps to run an application
+## Steps to run an application
  
- Step1: Do npm install,once downloaded the package.
- Step2: Run the command as npm start or ng-serve open
- Step3: Open the browser window and check the port number as 4200
+  * Do npm install,once downloaded the package.
+  * Run the command as npm start or ng-serve open
+  * Open the browser window and check the port number as 4200
 
 
 ## Authors
 
-* **Muthupriya Arun** - *Initial work* - [muthupriyashanmugam](https://github.com/muthupriyashanmugam
+* **Muthupriya Arun** - *Initial work* - [muthupriyashanmugam](https://github.com/muthupriyashanmugam)
 
 ## License
 

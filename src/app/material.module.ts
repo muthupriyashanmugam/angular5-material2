@@ -6,7 +6,7 @@ import { MatInputModule,MatSlideToggleModule,
          MatButtonModule,MatSnackBarModule,
          MatIconModule,MatToolbarModule,
          MatSidenavModule,MatCheckboxModule,
-         MatListModule} from '@angular/material';
+         MatListModule,MatStepperModule} from '@angular/material';
 
 
 @NgModule({
@@ -14,7 +14,7 @@ import { MatInputModule,MatSlideToggleModule,
       MatSlideToggleModule,MatTableModule,MatSortModule,
       MatInputModule,MatPaginatorModule,MatTooltipModule,MatButtonModule,
       MatSnackBarModule,MatIconModule,MatToolbarModule,MatSidenavModule,MatCheckboxModule,
-      MatListModule
+      MatListModule,MatStepperModule
     ]
   })
   export class Material5Module { }

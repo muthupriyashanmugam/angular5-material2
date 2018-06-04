@@ -18,8 +18,8 @@ export class AppComponent {
         path:'table'
       },
       {
-        name:'Hints',
-        path:'hints'
+        name:'Wizard Form',
+        path:'stepper'
       }
     ];
   }

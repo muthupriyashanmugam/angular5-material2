@@ -2,7 +2,7 @@ import { Component, OnInit, ViewChild, AfterViewInit} from '@angular/core';
 import {MatTableDataSource,MatSort, MatPaginator,MatSnackBar} from '@angular/material';
 import { Sort } from '@angular/material';
 @Component({
-  selector: 'app-root',
+  selector: 'sd-mattable',
   templateUrl: '../table/mat-table.component.html'
 })
 export class Mat2TableComponent implements OnInit,AfterViewInit {

@@ -20,6 +20,10 @@ export class AppComponent {
       {
         name:'Wizard Form',
         path:'stepper'
+      },
+      {
+        name:'Form sample',
+        path:'formvalidation'
       }
     ];
   }
